@@ -66,7 +66,7 @@ class Stopwatch extends HTMLElement {
     <div>
       <p id='stopwatch-value'>${Time.toHHMMSS(this.time)}</p>
     </div>
-    <div class='flex'>
+    <div class='flex space-between'>
       <button id='start-btn' class='bg-green'>Start</button>
       <button id='pause-btn' class='bg-blue'>Pause</button>
       <button id='stop-btn' class='bg-red'>Stop</button>
