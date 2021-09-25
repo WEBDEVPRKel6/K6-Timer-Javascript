@@ -1,11 +1,9 @@
 # Stopwatch in VanillaJS (Faza)
 
 ## Getting Started
-- Install all dependencies
-<br>
+- Install all dependencies <br>
 `npm install .`
-- Start dev server
-<br>
+- Start dev server <br>
 `npm run start-dev`
 
 ## Build
