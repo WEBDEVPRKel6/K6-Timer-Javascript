@@ -21,6 +21,10 @@ body, html {
   background: blue;
 }
 
+.flex {
+  display: flex;
+}
+
 main {
   width: 50%;
   margin: 0 auto;
@@ -44,9 +48,15 @@ stop-watch>div {
 }
 
 button {
+  width: 100%;
   padding: .5rem 2rem;
+  margin-right: 1rem;
   border: 1px solid transparent;
   color: white;
   border-radius: 4px;
   cursor: pointer;
+}
+
+#pause-btn {
+  display: none;
 }

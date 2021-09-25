@@ -1,4 +1,4 @@
-import './stopwatch.js';
+import './stopwatchList.js';
 
 class Wrapper extends HTMLElement {
   connectedCallback () {
@@ -7,9 +7,7 @@ class Wrapper extends HTMLElement {
 
   render() {
     this.innerHTML =`
-    <stop-watch></stop-watch>
-    <stop-watch></stop-watch>
-    <stop-watch></stop-watch>
+    <stopwatch-list></stopwatch-list>
     `
   }
 }
