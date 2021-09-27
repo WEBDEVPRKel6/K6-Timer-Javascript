@@ -121,8 +121,8 @@ class Stopwatch extends HTMLElement {
   render() {
     this.innerHTML = `
     <div id='stopwatch-container'>
-      <h3>${this._title}</h3>
-      <div>
+      <h3 class='mb1'>${this._title}</h3>
+      <div class='mb1'>
         <p id='stopwatch-value'>${Time.toHHMMSS(this._time)}</p>
       </div>
       <div class='flex space-between'>
@@ -131,6 +131,7 @@ class Stopwatch extends HTMLElement {
         <button id='stop-btn' class='bg-red'>Stop</button>
         <button id='delete-btn' class='bg-red'>Delete</button>
       </div>
+      </br>
     </div>
     `;
 
