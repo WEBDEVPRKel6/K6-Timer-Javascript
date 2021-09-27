@@ -3,11 +3,17 @@ import Time from '../util/time.js';
 class Stopwatch extends HTMLElement {
   constructor() {
     super();
-    this.time = 0;
+    this._time = 0;
     this.interval;
     this.startBtn;
     this.stopBtn;
+    this.stopwatchContainer;
     this._title = 'Untitled';
+    this._running = false;
+  }
+
+  set clockId(value) {
+    this._clockId = value;
   }
 
   set title(value) {
@@ -18,6 +24,22 @@ class Stopwatch extends HTMLElement {
     this._handleDelete = value;
   }
 
+  set stopwatchData(value) {
+    this._stopwatchData = value;
+  }
+
+  set time(value) {
+    this._time = value;
+  }
+
+  set running(value) {
+    this._running = value;
+  }
+
+  set date(value) {
+    this._date = value;
+  }
+
   connectedCallback() {
     this.render();
   }
@@ -25,6 +47,7 @@ class Stopwatch extends HTMLElement {
   handleStart() {
     this.startBtn.style.display = 'none';
     this.pauseBtn.style.display = 'block';
+    this._running = true;
 
     if (!this.interval) {
       this.interval = setInterval(() => this.handleUpdate(), 1000);
@@ -34,20 +57,36 @@ class Stopwatch extends HTMLElement {
   handlePause() {
     this.startBtn.style.display = 'block';
     this.pauseBtn.style.display = 'none';
+    this._running = false;
 
     if (this.interval) {
       clearInterval(this.interval);
       this.interval = null;
     }
+
+    this._stopwatchData.setData(this._clockId, {
+      id: this._clockId,
+      title: this._title,
+      time: this._time,
+      date: new Date(),
+      running: this._running
+    })
   }
 
   handleUpdate() {
-    this.time += 1;
-    this.querySelector('#stopwatch-value').innerText = Time.toHHMMSS(this.time);
+    this._time += 1;
+    this.querySelector('#stopwatch-value').innerText = Time.toHHMMSS(this._time);
+    this._stopwatchData.setData(this._clockId, {
+      id: this._clockId,
+      title: this._title,
+      time: this._time,
+      date: new Date(),
+      running: this._running
+    })
   }
 
   handleStop() {
-    if (this.time === 0 && !this.interval)
+    if (this._time === 0 && !this.interval)
       return;
 
     if (this.pauseBtn.style.display === 'block') {
@@ -55,25 +94,47 @@ class Stopwatch extends HTMLElement {
       this.startBtn.style.display = 'block';
     }
 
+    if(this.querySelector('#stopwatch-result')) {
+      this.querySelector('#stopwatch-result').remove();
+    }
+
+    const result = document.createElement('span');
+    result.setAttribute('id', 'stopwatch-result')
+    this.stopwatchContainer.appendChild(result);
+    result.innerText = `Timer ${this._title} sudah berjalan selama ${Time.toHHMMSS(this._time)}`;
+
+    this._running = false;
     clearInterval(this.interval);
-    this.time = 0;
-    this.querySelector('#stopwatch-value').innerText = Time.toHHMMSS(this.time);
+    this.interval = null;
+    this._time = 0;
+    this.querySelector('#stopwatch-value').innerText = Time.toHHMMSS(this._time);
+
+    this._stopwatchData.setData(this._clockId, {
+      id: this._clockId,
+      title: this._title,
+      time: this._time,
+      date: new Date(),
+      running: this._running
+    })
   }
 
   render() {
     this.innerHTML = `
-    <h3>${this._title}</h3>
-    <div>
-      <p id='stopwatch-value'>${Time.toHHMMSS(this.time)}</p>
-    </div>
-    <div class='flex space-between'>
-      <button id='start-btn' class='bg-green'>Start</button>
-      <button id='pause-btn' class='bg-blue'>Pause</button>
-      <button id='stop-btn' class='bg-red'>Stop</button>
-      <button id='delete-btn' class='bg-red'>Delete</button>
+    <div id='stopwatch-container'>
+      <h3>${this._title}</h3>
+      <div>
+        <p id='stopwatch-value'>${Time.toHHMMSS(this._time)}</p>
+      </div>
+      <div class='flex space-between'>
+        <button id='start-btn' class='bg-green'>Start</button>
+        <button id='pause-btn' class='bg-blue'>Pause</button>
+        <button id='stop-btn' class='bg-red'>Stop</button>
+        <button id='delete-btn' class='bg-red'>Delete</button>
+      </div>
     </div>
     `;
 
+    this.stopwatchContainer = this.querySelector('#stopwatch-container'); 
     this.pauseBtn = this.querySelector('#pause-btn');
     this.startBtn = this.querySelector('#start-btn');
     this.stopBtn = this.querySelector('#stop-btn');
@@ -83,6 +144,14 @@ class Stopwatch extends HTMLElement {
     this.pauseBtn.addEventListener('click', () => this.handlePause());
     this.stopBtn.addEventListener('click', () => this.handleStop());
     this.deleteBtn.addEventListener('click', () => this._handleDelete(this));
+
+    if (this._running) {
+      const newTime = (new Date().getTime() - new Date(this._date).getTime()) / 1000;
+      console.log(newTime);
+      this._time = this._time + newTime;
+      console.log(this._time);
+      this.handleStart();
+    }
   }
 }
 

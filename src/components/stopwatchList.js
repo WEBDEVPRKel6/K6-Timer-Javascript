@@ -1,20 +1,37 @@
 import './stopwatch.js';
+import StopwatchDataList from '../data/stopwatchData.js';
 
 class StopwatchList extends HTMLElement {
-  connectedCallback () {
-    this.render();
-    this.stopwatchCount = 1;
+  constructor() {
+    super();
+    this.data = new StopwatchDataList();
+    this.stopwatchCount = this.data.getData().length;
     this.addBtn;
     this.stopwatchList;
     this.titleForm;
+  }
+
+  connectedCallback () {
+    this.render();
   }
 
   addStopwatch () {
     const newStopwatch = document.createElement('stop-watch');
     newStopwatch.title = this.titleForm.value || 'Untitled';
     newStopwatch.handleDelete = this.deleteStopwatch;
+    newStopwatch.clockId = this.stopwatchCount;
+    newStopwatch.stopwatchData = this.data;
     this.stopwatchList.insertBefore(newStopwatch, this.titleForm);
+    
+    this.data.addData({
+      id: this.stopwatchCount,
+      title: this.titleForm.value || 'Untitled',
+      time: 0,
+      running: false
+    });
+
     this.titleForm.value = '';
+    this.stopwatchCount++;
   }
 
   deleteStopwatch(stopwatch) {
@@ -33,6 +50,20 @@ class StopwatchList extends HTMLElement {
     this.stopwatchList = this.querySelector('.stopwatch-list-container');
     this.addBtn = this.querySelector('#addStopwatch-btn');
     this.addBtn.addEventListener('click', () => this.addStopwatch());
+
+    if (this.stopwatchCount > 0) {
+      for (let i = 0; i < this.stopwatchCount; i++) {
+        const newStopwatch = document.createElement('stop-watch');
+        newStopwatch.title = this.data.data[i].title;
+        newStopwatch.clockId = this.data.data[i].id;
+        newStopwatch.time = this.data.data[i].time;
+        newStopwatch.date = this.data.data[i].date;
+        newStopwatch.running = this.data.data[i].running;
+        newStopwatch.handleDelete = this.deleteStopwatch;
+        newStopwatch.stopwatchData = this.data;
+        this.stopwatchList.insertBefore(newStopwatch, this.titleForm);
+      }
+    }
   }
 }
 
