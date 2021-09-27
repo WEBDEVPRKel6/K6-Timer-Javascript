@@ -1,5 +1,10 @@
-let counter = 0,
-  hours = 0,
+let counter = 0;
+
+if (localStorage.getItem("runningTime") != null) {
+  counter = localStorage.getItem("runningTime");
+}
+
+let hours = 0,
   minutes = 0,
   seconds = 0,
   stopwatchCounter = 1,
@@ -16,8 +21,8 @@ let multiButton = document.getElementById("multi-btn"),
   stopButton = document.getElementById("stop-btn"),
   addButton = document.getElementById("add-btn");
 
-// let stopwatchContainer = document.getElementById("stopwatch-container");
-// let stopwatch = document.getElementById("stopwatch");
+let stopwatchContainer = document.getElementById("stopwatch-container");
+let stopwatch = document.getElementById("stopwatch");
 
 const timeConvert = (counter) => {
   hours = Math.floor(counter / 3600);
@@ -67,14 +72,17 @@ const startTimer = () => {
   if (!isPause) {
     counter++;
     timeConvert(counter);
+    localStorage.setItem("runningTime", counter);
   }
 };
 
-// const addStopwatch = () => {
-//   let stopwatchCLone = stopwatch.cloneNode(false);
-//   stopwatchCLone.setAttribute("id", `stopwatch${stopwatchCounter}`);
-//   stopwatchContainer.appendChild(stopwatchCLone);
-// };
+const addStopwatch = () => {
+  let stopwatchCLone = stopwatch.cloneNode(true);
+  stopwatchCLone.setAttribute("id", `stopwatch${stopwatchCounter}`);
+  stopwatchContainer.appendChild(stopwatchCLone);
+};
+
+timeConvert(counter);
 
 multiButton.onclick = () => {
   if (multiButton.innerHTML == "Start") {
@@ -94,9 +102,11 @@ stopButton.onclick = () => {
   if (counter != 0) {
     clearInterval(interval);
     stopTimer();
+    multiButton.innerHTML = "Start";
+    localStorage.clear();
   }
 };
 
-// addButton.onclick = () => {
-//   addStopwatch();
-// };
+addButton.onclick = () => {
+  addStopwatch();
+};
