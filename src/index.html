@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Stopwatch</title>
+        <link rel="stylesheet" href="styles/style.css">
+    </head>
+
+    <body>
+        <div class="container center">
+            <div class="timerDisplay">
+                00 : 00 : 00
+            </div>
+
+            <div class="buttons">
+                <button id="startTimer" class="btn btn-border">Start</button>
+                <button id="pauseTimer" class="btn btn-border">Pause</button>
+                <button id="continueTimer" class="btn btn-border">Continue</button>
+                <button id="stopTimer" class="btn">Stop</button>
+            </div>
+
+            <div class="totalTime">
+                Total working time 
+                <br><br>
+                00 : 00 : 00
+            </div>
+        </div>
+
+        <div class="form-popup" id="myForm">
+            <form class="form-container">
+              <h1>Activity Name</h1>
+              <input class="activityName" type="text" placeholder="Enter Activity Name ex: WebDev Task" name="activityName" required>
+              <button type="button" class="btn" id="submitActivity">Start Now</button>
+            </form>
+        </div>
+
+        <script src="stopwatch.js"></script>
+    </body>
+</html>

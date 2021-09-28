@@ -1,0 +1,123 @@
+/* 2D314F */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #1A1F39;
+  justify-content: center;
+  text-align: center;
+}
+* {box-sizing: border-box;}
+
+.heading, .timerDisplay, .totalTime{
+  color: #ECDA1E;
+}
+
+.heading{
+  font-size: 72px ;
+  margin-bottom: 30px;
+  margin-top: 10px;
+}
+
+.btn{
+  background-color: #0000;
+  color: #ECDA1E;
+  border-color: #0000;
+  width: 140px;
+  height: 50px;
+  font-size: 16px;
+}
+
+.btn-border {
+  border-color: #ECDA1E;
+  border-radius: 50px;
+}
+
+.buttons{
+  margin-top: 20px;
+}
+
+.timerDisplay{
+  font-size: 120px;
+}
+
+.totalTime{
+  font-size: 30px;
+  margin-top: 30px;
+  color: #0000;
+}
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+h1{
+  font-size: 18px;
+  color: #ffffff;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: #3e4054;
+  border-radius: 10px;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #ECDA1E;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+#pauseTimer{
+  display: none;
+}
+
+#continueTimer{
+  display: none;
+}
