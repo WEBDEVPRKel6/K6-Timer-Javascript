@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Convergence&display=swap');
+
+body{
+    font-family: 'Convergence', sans-serif;
+}
+
+h2{
+    color: skyblue;
+    font-size: 40px;
+}
+
+.centering{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.counter{
+    font-size: 30px;
+    margin-top: auto;
+}
+
+.btn{
+    font-size: 16px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+#start-btn{
+    background-color: lightgreen;
+}
+
+#pause-btn{
+    background-color: lightblue;
+}
+
+#reset-btn{
+    background-color: lightgrey;
+}
+
+
