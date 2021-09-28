@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+		<div id="timer"></div>
+		<div>
+			<button id="start-button">Start</button>
+			<button id="stop-button">Stop</button>
+			<button id="reset-button">Reset</button>
+		</div>
+	</body>
+</html>
+
+<script type="text/javascript">
+	var hours = 0,
+		minutes = 0,
+		seconds = 0,
+		stat = "stop",
+		target = new Date(),
+		timerDiv = document.getElementById("timer"),
+		handler;
+
+	function init() { 
+		// set the target date time with the counter values
+		// counters more then 24h should have a date setup or it wont work
+  		target.setHours(hours);
+  		target.setMinutes(minutes);
+  		target.setSeconds(seconds);
+  		target.setMilliseconds(0); // make sure that miliseconds is 0
+  		timerDiv.innerHTML = target.toTimeString().split(" ")[0]; // print the value
+  		clearInterval(handler); //Stop the time
+  	}
+
+	function updateTimer() {
+		var time = target.getTime();
+		target.setTime(time + 1000); // subtract 1 second with every thick
+		timerDiv.innerHTML = target.toTimeString().split(" ")[0];
+		// Batas MAKS
+		if (target.getHours() === 99 && target.getMinutes() === 99 && target.getSeconds() === 99){
+			// counter should stop
+			clearInterval(handler);
+		}
+	}
+
+	handler = setInterval(updateTimer, 1000);
+
+	document.getElementById("stop-button").addEventListener("click", function() {
+		clearInterval(handler);
+		stat = "pause";
+	});
+
+	document.getElementById("start-button").addEventListener("click", function() {
+		hours = 0;
+        minutes = 0;
+		seconds = 0;
+		clearInterval(handler);
+		handler = setInterval(updateTimer, 1000);
+		stat = "ongo";
+	});
+	document.getElementById("reset-button").addEventListener("click", function() {
+		console.log("aa");
+		stat = "stop";
+		init();
+		clearInterval(handler);
+	});
+
+	// Inisialisasi.
+	init();
+
+    function setUnLoad() {
+    	var now = new Date();
+
+        const data_time = {
+			jam : target.getHours(),
+			min : target.getMinutes(),
+			det : target.getSeconds(),
+			stat : stat,
+			today_h : now.getHours(),
+			today_m : now.getMinutes(),
+			today_s : now.getSeconds()
+		}
+		window.localStorage.setItem('data_waktu', JSON.stringify(data_time));
+    }
+	window.onbeforeunload = setUnLoad;
+
+    function cekOnLoad() {
+        const data = JSON.parse(window.localStorage.getItem('data_waktu'));
+        console.log(JSON.parse(window.localStorage.getItem('data_waktu')));
+
+        if (data.stat == "pause") {
+        	console.log("Ini waktu pause!");
+        	hours = data.jam;
+        	minutes = data.min;
+			seconds = data.det;
+			init();
+		}
+		else if (data.stat == "ongo"){
+    		var now = new Date();
+			var s_lama = hitung_det(data.today_h, data.today_m, data.today_s);
+			var s_baru = hitung_det(now.getHours(), now.getMinutes(), now.getSeconds());
+			var diff = s_baru - s_lama;
+
+			const temp = count_time(diff);
+
+			console.log("Waktu Lama : " + s_lama + " Waktu Baru : " + s_baru);
+			console.log("Addition Time : " + diff);
+        	console.log("Ini waktu jalan!");
+
+        	hours = data.jam + temp[0];
+        	minutes = data.min + temp[1];
+			seconds = data.det + temp[2];
+			init();
+		}
+		else{
+			hours = 0;
+        	minutes = 0;
+			seconds = 0;
+			init();
+        	console.log("Ini waktu stop!");
+		}
+    }
+    window.onload = cekOnLoad;
+
+    function hitung_det(h, m, s){
+    	var total = ((h*3600) + (m*60) + (s));
+    	return total;
+    }
+
+    function count_time(waktu){
+    	const data = [0,0,0];
+    	var tmp;
+    	// Jam
+    	if (waktu >= 3600){
+    		var x = waktu / 3600;
+    		waktu = waktu - (x * 3600);
+    		data[0] = x;
+    	}
+    	// Menit
+    	x = waktu / 60;
+    	x = parseInt(x);
+    	waktu = waktu - (x * 60);
+    	data[1] = x;
+    	// Detik
+    	data[2] = waktu;
+
+    	console.log("Data waktu jalan closed : " + data);
+
+    	return data;
+    }
+
+</script>
