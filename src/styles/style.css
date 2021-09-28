@@ -1,13 +1,14 @@
 :root {
   --bg-main: #171717;
-  --text-main: #EDEDED;
+  --text-main: #ededed;
 }
 
-body, html {
+body,
+html {
   width: 100%;
   color: var(--text-main);
   background: var(--bg-main);
-  font-family: 'Sora', sans-serif;
+  font-family: "Sora", sans-serif;
 }
 
 * {
@@ -17,7 +18,7 @@ body, html {
 }
 
 .bg-green {
-  background: #65D777;
+  background: #65d777;
 }
 
 .bg-red {
@@ -39,6 +40,7 @@ body, html {
 .align-center {
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 .flex-center {
@@ -46,6 +48,10 @@ body, html {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.mt1 {
+  margin-top: 1rem;
 }
 
 .mr1 {
@@ -74,7 +80,7 @@ stop-watch {
   font-size: 1.625rem;
 }
 
-stop-watch>div {
+stop-watch > div {
   margin: 1rem 0;
 }
 
@@ -83,7 +89,7 @@ stop-watch>div {
 }
 
 button {
-  padding: .5rem 2rem;
+  padding: 0.5rem 2rem;
   border: 1px solid transparent;
   color: white;
   border-radius: 4px;
@@ -96,7 +102,7 @@ button {
 
 #stopwatch-title-form {
   width: 100%;
-  padding: .3rem;
+  padding: 0.3rem;
   border: none;
   outline: none;
   border-radius: 3px;
