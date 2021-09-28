@@ -1,11 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Convergence&display=swap');
 
+*{
+    background-color: linen;
+}
+
 body{
     font-family: 'Convergence', sans-serif;
 }
 
 h2{
-    color: skyblue;
+    color: silver;
     font-size: 40px;
 }
 
@@ -29,16 +33,21 @@ h2{
     text-decoration: none;
 }
 
-#start-btn{
+#start-pause-btn{
     background-color: lightgreen;
 }
 
-#pause-btn{
-    background-color: lightblue;
+#stop-btn{
+    background-color: red;
 }
 
 #reset-btn{
     background-color: lightgrey;
+}
+
+#message{
+    color: silver;
+    font-size: 20px;
 }
 
 

@@ -3,7 +3,8 @@ var hours,
     seconds, 
     hoursOut,
     minutesOut,
-    secondsOut = 0;
+    secondsOut = 0,
+    isPause;
 
 var totalSeconds = localStorage.getItem("totalSeconds");
     
@@ -35,6 +36,10 @@ function checkTime(i) {
   return i;
 }
 
+function stopped(){
+  return (document.getElementById("message").innerHTML = `Waktu yang Anda gunakan adalah <br> ${hoursOut} Jam ${minutesOut} Menit ${secondsOut} Detik.`);
+}
+
 function saveData(dataHours, dataMinutes, dataSeconds, dataTotalSeconds){
   localStorage.setItem("hoursOut", dataHours);
   localStorage.setItem("minutesOut", dataMinutes);
@@ -42,20 +47,39 @@ function saveData(dataHours, dataMinutes, dataSeconds, dataTotalSeconds){
   localStorage.setItem("totalSeconds", dataTotalSeconds);
 }
 
-document.getElementById('start-btn').addEventListener('click', () => {
-  intervalId = setInterval(startTimer, 1000);
+document.getElementById('start-pause-btn').addEventListener('click', () => {
+  if (document.getElementById('start-pause-btn').innerHTML == "Start") {
+    isPause = false;
+    intervalId = setInterval(startTimer, 1000);
+    document.getElementById('start-pause-btn').innerHTML = "Pause";
+  } else if (document.getElementById('start-pause-btn').innerHTML == "Pause") {
+    isPause = true;
+    document.getElementById('start-pause-btn').innerHTML = "Continue";
+    clearInterval(intervalId);
+  } else if (document.getElementById('start-pause-btn').innerHTML == "Continue") {
+    isPause = false;
+    document.getElementById('start-pause-btn').innerHTML = "Pause";
+    intervalId = setInterval(startTimer, 1000);
+  }
   saveData(hoursOut, minutesOut, secondsOut, totalSeconds);
 })
-    
-document.getElementById('pause-btn').addEventListener('click', () => {
-  if (intervalId)
-    clearInterval(intervalId);
-    saveData(hoursOut, minutesOut, secondsOut, totalSeconds);
-});
-      
-document.getElementById('reset-btn').addEventListener('click', () => {
+  
+function clearArea(){
   totalSeconds = 0;
   document.getElementById("hours").innerHTML = '00';
   document.getElementById("minutes").innerHTML = '00';
   document.getElementById("seconds").innerHTML = '00';
+}
+
+document.getElementById('stop-btn').addEventListener('click', () => {
+  if (intervalId)
+    clearInterval(intervalId);
+    localStorage.clear();
+    document.getElementById('start-pause-btn').innerHTML = "Start";
+    clearArea();
+    stopped();
+});
+      
+document.getElementById('reset-btn').addEventListener('click', () => {
+  clearArea();
 });
