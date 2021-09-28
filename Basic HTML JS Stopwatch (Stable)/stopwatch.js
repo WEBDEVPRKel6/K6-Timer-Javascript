@@ -7,7 +7,6 @@ if (localStorage.getItem("runningTime") != null) {
 let hours = 0,
   minutes = 0,
   seconds = 0,
-  stopwatchCounter = 1,
   interval,
   isPause;
 
@@ -18,11 +17,7 @@ let appendHour = document.getElementById("hour"),
 let stopMessage = document.getElementById("stop-message");
 
 let multiButton = document.getElementById("multi-btn"),
-  stopButton = document.getElementById("stop-btn"),
-  addButton = document.getElementById("add-btn");
-
-let stopwatchContainer = document.getElementById("stopwatch-container");
-let stopwatch = document.getElementById("stopwatch");
+  stopButton = document.getElementById("stop-btn");
 
 const timeConvert = (counter) => {
   hours = Math.floor(counter / 3600);
@@ -76,12 +71,6 @@ const startTimer = () => {
   }
 };
 
-const addStopwatch = () => {
-  let stopwatchCLone = stopwatch.cloneNode(true);
-  stopwatchCLone.setAttribute("id", `stopwatch${stopwatchCounter}`);
-  stopwatchContainer.appendChild(stopwatchCLone);
-};
-
 timeConvert(counter);
 
 multiButton.onclick = () => {
@@ -105,8 +94,4 @@ stopButton.onclick = () => {
     multiButton.innerHTML = "Start";
     localStorage.clear();
   }
-};
-
-addButton.onclick = () => {
-  addStopwatch();
 };
