@@ -66,6 +66,7 @@ class Stopwatch extends HTMLElement {
 
   handlePause() {
     this.startBtn.style.display = 'block';
+    this.startBtn.innerText = 'Continue';
     this.pauseBtn.style.display = 'none';
     this._running = false;
 
@@ -79,7 +80,7 @@ class Stopwatch extends HTMLElement {
 
   handleUpdate() {
     this._time += 1;
-    
+
     if (this._time >= 86400) {
       alert(`Stopwatch ${this._title} sudah berjalan selama 24 jam! Stopwatch akan berhenti otomatis`);
       this.handleStop();
@@ -98,6 +99,8 @@ class Stopwatch extends HTMLElement {
       this.pauseBtn.style.display = 'none';
       this.startBtn.style.display = 'block';
     }
+
+    this.startBtn.innerText = 'Start';
 
     if(this.querySelector('#stopwatch-result')) {
       this.querySelector('#stopwatch-result').remove();
