@@ -44,6 +44,16 @@ class Stopwatch extends HTMLElement {
     this.render();
   }
 
+  updateData() {
+    this._stopwatchData.setData(this._clockId, {
+      id: this._clockId,
+      title: this._title,
+      time: this._time,
+      date: new Date(),
+      running: this._running
+    });
+  }
+
   handleStart() {
     this.startBtn.style.display = 'none';
     this.pauseBtn.style.display = 'block';
@@ -64,25 +74,20 @@ class Stopwatch extends HTMLElement {
       this.interval = null;
     }
 
-    this._stopwatchData.setData(this._clockId, {
-      id: this._clockId,
-      title: this._title,
-      time: this._time,
-      date: new Date(),
-      running: this._running
-    })
+    this.updateData();
   }
 
   handleUpdate() {
     this._time += 1;
+    
+    if (this._time >= 86400) {
+      alert(`Stopwatch ${this._title} sudah berjalan selama 24 jam! Stopwatch akan berhenti otomatis`);
+      this.handleStop();
+    }
+
     this.querySelector('#stopwatch-value').innerText = Time.toHHMMSS(this._time);
-    this._stopwatchData.setData(this._clockId, {
-      id: this._clockId,
-      title: this._title,
-      time: this._time,
-      date: new Date(),
-      running: this._running
-    })
+
+    this.updateData();
   }
 
   handleStop() {
@@ -109,13 +114,7 @@ class Stopwatch extends HTMLElement {
     this._time = 0;
     this.querySelector('#stopwatch-value').innerText = Time.toHHMMSS(this._time);
 
-    this._stopwatchData.setData(this._clockId, {
-      id: this._clockId,
-      title: this._title,
-      time: this._time,
-      date: new Date(),
-      running: this._running
-    })
+    this.updateData();
   }
 
   render() {
