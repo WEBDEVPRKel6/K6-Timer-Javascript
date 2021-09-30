@@ -35,8 +35,6 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
 This project is a mini project as an assignment for the Web Development course. In this project, we are making a stopwatch for calculating the time that students need to do their tasks. This stopwatch has some features, those are:
 
 * Adding a new stopwatch for the new task.
@@ -110,4 +108,4 @@ Project Link: [https://github.com/WEBDEVPRKel6/K6-Timer-Javascript.git]
 [stars-url]: https://github.com/WEBDEVPRKel6/K6-Timer-Javascript/stargazers
 [license-shield]: https://img.shields.io/github/license/WEBDEVPRKel6/K6-Timer-Javascript.svg?style=for-the-badge
 [license-url]: https://github.com/WEBDEVPRKel6/K6-Timer-Javascript/blob/master/LICENSE.txt
->>>>>>> Stashed changes
+
