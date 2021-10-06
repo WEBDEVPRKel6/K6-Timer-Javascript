@@ -28,6 +28,7 @@ Menggunakan Visual Studio Code
   npm run start-dev
   ```
 * Buka web-browser dan askes localhost port 8080.
+
 Melalui CMP (Command Prompt)
 * Buka CMP (Command Prompt)
 * Arahkan CMD ke folder file Project
