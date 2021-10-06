@@ -13,8 +13,29 @@ Project Javascript Timer ini dibuat menggunakan bahasa :
 ## Getting Started
 
 ### Prerequisites
+*Install Lastest NPM on your devices :
+  ```sh
+  npm install npm@latest -g
+  ```
+*Download Script Code
 
 ### Installation
+Menggunakan Visual Studio Code
+* Buka File Project menggunakan VSC
+* Buka Terminal pada VSC
+* Ketikan
+  ```sh
+  npm run start-dev
+  ```
+* Buka web-browser dan askes localhost port 8080.
+Melalui CMP (Command Prompt)
+* Buka CMP (Command Prompt)
+* Arahkan CMD ke folder file Project
+* Ketikan
+  ```sh
+  npm run start-dev
+  ```
+* Buka web-browser dan askes localhost port 8080.
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -24,6 +45,7 @@ Project Javascript Timer ini dibuat menggunakan bahasa :
 
 <!-- CONTRIBUTING -->
 ## Contributing
+Cuma anggota project yang bisa contrib, ehehehehe
 
 <!-- LICENSE -->
 ## License
@@ -41,3 +63,4 @@ Project Group : K6-3B-WebDev'2021
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
+none
