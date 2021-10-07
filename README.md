@@ -47,6 +47,10 @@ This project still needs some improvements and we are still working on it. We ac
 ### Built With
 
 Instead of frameworks, we are using pure Javascript (Vanilla Javascript). 
+We are using:
+* HTML
+* CSS
+* Vanilla JS
 
 <!-- GETTING STARTED -->
 ## Getting Started
