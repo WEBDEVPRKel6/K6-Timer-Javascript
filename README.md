@@ -45,7 +45,7 @@ This project still needs some improvements and we are still working on it. We ac
 
 ### Built With
 
-Instead of frameworks, we are using pure Javascript. 
+Instead of frameworks, we are using pure Javascript (Vanilla Javascript). 
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -62,11 +62,14 @@ Instead of frameworks, we are using pure Javascript.
     ```sh
     npm run start-dev
     ```
+    Open your web-browser and access localhost in 8080 port
 4. run 
     ```sh
     npm run build
     ```
 5. the build will be in `/dist` folder.
+
+You can do this in VSC or in your Command Prompt
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -83,6 +86,8 @@ This application can help you calculate the amount of time to do your task, so y
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
+Only project members can contribute to this project
+
 <!-- LICENSE -->
 ## License
 
@@ -93,6 +98,14 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Project Link: [https://github.com/WEBDEVPRKel6/K6-Timer-Javascript.git]
 
+Project Group: K6-3B-WebDev'2021
+
+Members
+* Bima      : bimaputras.sz14@gmail.com
+* Dzakira   : zigdzak27@gmail.com
+* M. Faza   : fazailman992@gmail.com
+* Nisa S    : nisa.shadrina.tif419@polban.ac.id
+* Salman S  : salmanshalahuddin133@gmail.com
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
