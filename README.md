@@ -4,7 +4,7 @@
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
-[![MIT License][license-shield]][https://github.com/WEBDEVPRKel6/K6-Timer-Javascript/blob/main/LICENSE.txt]
+[![MIT License][license-shield]][license-url]
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
