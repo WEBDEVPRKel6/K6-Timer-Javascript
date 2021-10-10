@@ -4,7 +4,7 @@
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
-[![MIT License][license-shield]][license-url]
+[![MIT License][license-shield]][https://github.com/WEBDEVPRKel6/K6-Timer-Javascript/blob/main/LICENSE.txt]
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
@@ -41,6 +41,7 @@ This project is a mini project as an assignment for the Web Development course. 
 * Adding a new stopwatch for the new task.
 * Deleting stopwatch.
 * Adding a name to each stopwatch.
+* Running in background. The stopwatch will still run even if you close the tab.
 
 This project still needs some improvements and we are still working on it. We accept constructive criticism and suggestions to improve the quality of the stopwatch that we make.
 
@@ -80,6 +81,23 @@ You can do this in VSC or in your Command Prompt
 ## Usage
 
 This application can help you calculate the amount of time to do your task, so you don't have to calculate manually. This helps you especially when you need to report how long it took you to do some task. You can also add a new stopwatch as much as your tasks.
+1. Give a title to your stopwatch, e.g. "Math Assignment".
+2. Click the `Add new` button.
+3. Click the `Start` button to starting the stopwatch.
+4. To pause the stopwatch, you can click the `Pause` button.
+5. To stop the stopwatch, you can click the `Stop` button.
+6. You can also delete the stopwatch by clicking the `Delete` button.
+
+<!-- ROADMAP -->
+## Roadmap
+- [x] Analyze the requirement
+- [x] Developing HTML and CSS
+- [x] Adding the Vanilla JS script
+- [x] Adding the Add button.
+- [x] Adding local storage.
+- [x] Fixing some bug.  
+
+See the [open issues](https://github.com/WEBDEVPRKel6/K6-Timer-Javascript/issues) for a full list of proposed features (and known issues).
 
 
 <!-- CONTRIBUTING -->
@@ -109,7 +127,7 @@ Members
 * Bima      : bimaputras.sz14@gmail.com
 * Dzakira   : zigdzak27@gmail.com
 * M. Faza   : fazailman992@gmail.com
-* Nisa S    : nisa.shadrina.tif419@polban.ac.id
+* Nisa S    : nisashadrina@gmail.com
 * Salman S  : salmanshalahuddin133@gmail.com
 
 <!-- ACKNOWLEDGEMENTS -->
