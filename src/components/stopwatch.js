@@ -24,6 +24,10 @@ class Stopwatch extends HTMLElement {
     this._handleDelete = value;
   }
 
+  set handleNonParallel(value) {
+    this._handleNonParallel = value;
+  }
+
   set stopwatchData(value) {
     this._stopwatchData = value;
   }
@@ -55,6 +59,8 @@ class Stopwatch extends HTMLElement {
   }
 
   handleStart() {
+    this._handleNonParallel(this);
+
     this.startBtn.style.display = 'none';
     this.pauseBtn.style.display = 'block';
     this._running = true;
@@ -129,7 +135,7 @@ class Stopwatch extends HTMLElement {
       </div>
       <div class='flex space-between'>
         <button id='start-btn' class='bg-green'>Start</button>
-        <button id='pause-btn' class='bg-blue'>Pause</button>
+        <button id='pause-btn-${this._clockId}' class='bg-blue pause-btn'>Pause</button>
         <button id='stop-btn' class='bg-red'>Stop</button>
         <button id='delete-btn' class='bg-red'>Delete</button>
       </div>
@@ -138,7 +144,7 @@ class Stopwatch extends HTMLElement {
     `;
 
     this.stopwatchContainer = this.querySelector('#stopwatch-container'); 
-    this.pauseBtn = this.querySelector('#pause-btn');
+    this.pauseBtn = this.querySelector(`#pause-btn-${this._clockId}`);
     this.startBtn = this.querySelector('#start-btn');
     this.stopBtn = this.querySelector('#stop-btn');
     this.deleteBtn = this.querySelector('#delete-btn');

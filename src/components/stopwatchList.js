@@ -6,6 +6,7 @@ class StopwatchList extends HTMLElement {
     super();
     this.data = new StopwatchDataList();
     this.stopwatchCount = this.data.getData().length;
+    StopwatchList.stopwatchIds = this.data.getData().map(stopwatch => stopwatch.id);
     this.addBtn;
     this.stopwatchList;
     this.titleForm;
@@ -19,7 +20,9 @@ class StopwatchList extends HTMLElement {
     const newStopwatch = document.createElement("stop-watch");
     newStopwatch.title = this.titleForm.value || "Untitled";
     newStopwatch.handleDelete = this.deleteStopwatch;
+    newStopwatch.handleNonParallel = this.handleNonParallel;
     newStopwatch.clockId = this.stopwatchCount;
+    StopwatchList.stopwatchIds.push(this.stopwatchCount);
     newStopwatch.stopwatchData = this.data;
     this.stopwatchList.insertBefore(newStopwatch, this.titleForm);
 
@@ -36,6 +39,16 @@ class StopwatchList extends HTMLElement {
 
   deleteStopwatch(stopwatch) {
     stopwatch.remove();
+  }
+
+  handleNonParallel(stopwatch) {
+    console.log(StopwatchList.stopwatchIds);
+    StopwatchList.stopwatchIds.forEach((id) => {
+      if(stopwatch._clockId === id)
+        return;
+
+      document.querySelector(`#pause-btn-${id}`).click();
+    })
   }
 
   render() {
@@ -60,6 +73,7 @@ class StopwatchList extends HTMLElement {
         newStopwatch.date = this.data.data[i].date;
         newStopwatch.running = this.data.data[i].running;
         newStopwatch.handleDelete = this.deleteStopwatch;
+        newStopwatch. handleNonParallel = this.handleNonParallel
         newStopwatch.stopwatchData = this.data;
         this.stopwatchList.insertBefore(newStopwatch, this.titleForm);
       }
