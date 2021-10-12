@@ -48,6 +48,10 @@ class Stopwatch extends HTMLElement {
     this.render();
   }
 
+  disconnectedCallback() {
+    this.updateData();
+  }
+
   updateData() {
     this._stopwatchData.setData(this._clockId, {
       id: this._clockId,
@@ -95,8 +99,6 @@ class Stopwatch extends HTMLElement {
     }
 
     this.querySelector('#stopwatch-value').innerText = Time.toHHMMSS(this._time);
-
-    this.updateData();
   }
 
   handleStop() {

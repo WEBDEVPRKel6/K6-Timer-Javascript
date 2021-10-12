@@ -1406,6 +1406,11 @@ var Stopwatch = /*#__PURE__*/function (_HTMLElement) {
       this.render();
     }
   }, {
+    key: "disconnectedCallback",
+    value: function disconnectedCallback() {
+      this.updateData();
+    }
+  }, {
     key: "updateData",
     value: function updateData() {
       this._stopwatchData.setData(this._clockId, {
@@ -1461,7 +1466,6 @@ var Stopwatch = /*#__PURE__*/function (_HTMLElement) {
       }
 
       this.querySelector('#stopwatch-value').innerText = time.toHHMMSS(this._time);
-      this.updateData();
     }
   }, {
     key: "handleStop",
