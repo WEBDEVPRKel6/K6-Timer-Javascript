@@ -17,7 +17,7 @@
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ":root {\n  --bg-main: #171717;\n  --text-main: #ededed;\n}\n\nbody,\nhtml {\n  width: 100%;\n  color: var(--text-main);\n  background: var(--bg-main);\n  font-family: \"Sora\", sans-serif;\n}\n\n* {\n  padding: 0;\n  margin: 0;\n  box-sizing: border-box;\n}\n\n.bg-green {\n  background: #65d777;\n}\n\n.bg-red {\n  background: red;\n}\n\n.bg-blue {\n  background: blue;\n}\n\n.flex {\n  display: flex;\n}\n\n.space-between {\n  justify-content: space-between;\n}\n\n.align-center {\n  align-items: center;\n  justify-content: center;\n  text-align: center;\n}\n\n.flex-center {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n\n.mt1 {\n  margin-top: 1rem;\n}\n\n.mr1 {\n  margin-right: 1rem;\n}\n\n.mb1 {\n  margin-bottom: 1rem;\n}\n\nmain {\n  width: 50%;\n  margin: 0 auto;\n}\n\ncontent-wrapper {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  padding: 2rem;\n}\n\nstop-watch {\n  text-align: center;\n  font-size: 1.625rem;\n}\n\nstop-watch > div {\n  margin: 1rem 0;\n}\n\n.stopwatch-list-container {\n  min-width: 20rem;\n}\n\nbutton {\n  padding: 0.5rem 2rem;\n  border: 1px solid transparent;\n  color: white;\n  border-radius: 4px;\n  cursor: pointer;\n}\n\n#addStopwatch-btn {\n  width: 100%;\n}\n\n#stopwatch-title-form {\n  width: 100%;\n  padding: 0.3rem;\n  border: none;\n  outline: none;\n  border-radius: 3px;\n  font-size: 1.125rem;\n}\n\n#stopwatch-container {\n  max-width: 30rem;\n  padding: 3rem;\n  border: 1px solid rgba(255, 255, 255, 0.219);\n  margin-bottom: 2rem;\n  border-radius: 1rem;\n}\n\n#pause-btn {\n  display: none;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ":root {\r\n  --bg-main: #171717;\r\n  --text-main: #ededed;\r\n}\r\n\r\nbody,\r\nhtml {\r\n  width: 100%;\r\n  color: var(--text-main);\r\n  background: var(--bg-main);\r\n  font-family: \"Sora\", sans-serif;\r\n}\r\n\r\n* {\r\n  padding: 0;\r\n  margin: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\n.bg-green {\r\n  background: #65d777;\r\n}\r\n\r\n.bg-red {\r\n  background: red;\r\n}\r\n\r\n.bg-blue {\r\n  background: blue;\r\n}\r\n\r\n.flex {\r\n  display: flex;\r\n}\r\n\r\n.space-between {\r\n  justify-content: space-between;\r\n}\r\n\r\n.align-center {\r\n  align-items: center;\r\n  justify-content: center;\r\n  text-align: center;\r\n}\r\n\r\n.flex-center {\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.mt1 {\r\n  margin-top: 1rem;\r\n}\r\n\r\n.mr1 {\r\n  margin-right: 1rem;\r\n}\r\n\r\n.mb1 {\r\n  margin-bottom: 1rem;\r\n}\r\n\r\nmain {\r\n  width: 50%;\r\n  margin: 0 auto;\r\n}\r\n\r\ncontent-wrapper {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  justify-content: center;\r\n  padding: 2rem;\r\n}\r\n\r\nstop-watch {\r\n  text-align: center;\r\n  font-size: 1.625rem;\r\n}\r\n\r\nstop-watch > div {\r\n  margin: 1rem 0;\r\n}\r\n\r\n.stopwatch-list-container {\r\n  min-width: 20rem;\r\n}\r\n\r\nbutton {\r\n  padding: 0.5rem 2rem;\r\n  border: 1px solid transparent;\r\n  color: white;\r\n  border-radius: 4px;\r\n  cursor: pointer;\r\n}\r\n\r\n#addStopwatch-btn {\r\n  width: 100%;\r\n}\r\n\r\n#stopwatch-title-form {\r\n  width: 100%;\r\n  padding: 0.3rem;\r\n  border: none;\r\n  outline: none;\r\n  border-radius: 3px;\r\n  font-size: 1.125rem;\r\n}\r\n\r\n#stopwatch-container {\r\n  max-width: 30rem;\r\n  padding: 3rem;\r\n  border: 1px solid rgba(255, 255, 255, 0.219);\r\n  margin-bottom: 2rem;\r\n  border-radius: 1rem;\r\n}\r\n\r\n.pause-btn {\r\n  display: none;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1376,6 +1376,11 @@ var Stopwatch = /*#__PURE__*/function (_HTMLElement) {
       this._handleDelete = value;
     }
   }, {
+    key: "handleNonParallel",
+    set: function set(value) {
+      this._handleNonParallel = value;
+    }
+  }, {
     key: "stopwatchData",
     set: function set(value) {
       this._stopwatchData = value;
@@ -1416,6 +1421,8 @@ var Stopwatch = /*#__PURE__*/function (_HTMLElement) {
     value: function handleStart() {
       var _this2 = this;
 
+      this._handleNonParallel(this);
+
       this.startBtn.style.display = 'none';
       this.pauseBtn.style.display = 'block';
       this._running = true;
@@ -1425,11 +1432,14 @@ var Stopwatch = /*#__PURE__*/function (_HTMLElement) {
           return _this2.handleUpdate();
         }, 1000);
       }
+
+      this.updateData();
     }
   }, {
     key: "handlePause",
     value: function handlePause() {
       this.startBtn.style.display = 'block';
+      if (this._time > 0) this.startBtn.innerText = 'Continue';
       this.pauseBtn.style.display = 'none';
       this._running = false;
 
@@ -1463,6 +1473,8 @@ var Stopwatch = /*#__PURE__*/function (_HTMLElement) {
         this.startBtn.style.display = 'block';
       }
 
+      this.startBtn.innerText = 'Start';
+
       if (this.querySelector('#stopwatch-result')) {
         this.querySelector('#stopwatch-result').remove();
       }
@@ -1483,9 +1495,9 @@ var Stopwatch = /*#__PURE__*/function (_HTMLElement) {
     value: function render() {
       var _this3 = this;
 
-      this.innerHTML = "\n    <div id='stopwatch-container'>\n      <h3 class='mb1'>".concat(this._title, "</h3>\n      <div class='mb1'>\n        <p id='stopwatch-value'>").concat(time.toHHMMSS(this._time), "</p>\n      </div>\n      <div class='flex space-between'>\n        <button id='start-btn' class='bg-green'>Start</button>\n        <button id='pause-btn' class='bg-blue'>Pause</button>\n        <button id='stop-btn' class='bg-red'>Stop</button>\n        <button id='delete-btn' class='bg-red'>Delete</button>\n      </div>\n      </br>\n    </div>\n    ");
+      this.innerHTML = "\n    <div id='stopwatch-container'>\n      <h3 class='mb1'>".concat(this._title, "</h3>\n      <div class='mb1'>\n        <p id='stopwatch-value'>").concat(time.toHHMMSS(this._time), "</p>\n      </div>\n      <div class='flex space-between'>\n        <button id='start-btn' class='bg-green'>").concat(this._time > 0 ? 'Continue' : 'Start', "</button>\n        <button id='pause-btn-").concat(this._clockId, "' class='bg-blue pause-btn'>Pause</button>\n        <button id='stop-btn' class='bg-red'>Stop</button>\n        <button id='delete-btn' class='bg-red'>Delete</button>\n      </div>\n      </br>\n    </div>\n    ");
       this.stopwatchContainer = this.querySelector('#stopwatch-container');
-      this.pauseBtn = this.querySelector('#pause-btn');
+      this.pauseBtn = this.querySelector("#pause-btn-".concat(this._clockId));
       this.startBtn = this.querySelector('#start-btn');
       this.stopBtn = this.querySelector('#stop-btn');
       this.deleteBtn = this.querySelector('#delete-btn');
@@ -1552,6 +1564,11 @@ var StopwatchDataList = /*#__PURE__*/function () {
     value: function getData() {
       return this.data;
     }
+  }, {
+    key: "saveData",
+    value: function saveData(data_baru) {
+      localStorage.setItem('stopwatchData', JSON.stringify(data_baru));
+    }
   }]);
 
   return StopwatchDataList;
@@ -1603,6 +1620,9 @@ var StopwatchList = /*#__PURE__*/function (_HTMLElement) {
     _this = _super.call(this);
     _this.data = new stopwatchData();
     _this.stopwatchCount = _this.data.getData().length;
+    StopwatchList.stopwatchIds = _this.data.getData().map(function (stopwatch) {
+      return stopwatch.id;
+    });
     _this.addBtn;
     _this.stopwatchList;
     _this.titleForm;
@@ -1620,7 +1640,9 @@ var StopwatchList = /*#__PURE__*/function (_HTMLElement) {
       var newStopwatch = document.createElement("stop-watch");
       newStopwatch.title = this.titleForm.value || "Untitled";
       newStopwatch.handleDelete = this.deleteStopwatch;
+      newStopwatch.handleNonParallel = this.handleNonParallel;
       newStopwatch.clockId = this.stopwatchCount;
+      StopwatchList.stopwatchIds.push(this.stopwatchCount);
       newStopwatch.stopwatchData = this.data;
       this.stopwatchList.insertBefore(newStopwatch, this.titleForm);
       this.data.addData({
@@ -1635,7 +1657,46 @@ var StopwatchList = /*#__PURE__*/function (_HTMLElement) {
   }, {
     key: "deleteStopwatch",
     value: function deleteStopwatch(stopwatch) {
-      stopwatch.remove();
+      var data_del = new stopwatchData();
+      var tmp = data_del.getData();
+      var idx;
+      console.log("lama");
+      console.log(data_del);
+      var r = confirm("Anda yakin menghapus stopwatch : " + stopwatch._title);
+
+      if (r == true) {
+        for (var i = 0; i < tmp.length; i++) {
+          if (stopwatch._clockId == tmp[i].id) {
+            tmp.splice(i, 1);
+            idx = i;
+            break;
+          }
+        }
+
+        for (idx; idx < tmp.length; idx++) {
+          tmp[idx].id = tmp[idx].id - 1;
+        }
+
+        console.log("baru");
+        console.log(tmp);
+        stopwatch.handlePause();
+        stopwatch.remove();
+        data_del.saveData(tmp);
+      } else {// Does Nothing
+      }
+    }
+  }, {
+    key: "handleNonParallel",
+    value: function handleNonParallel(stopwatch) {
+      StopwatchList.stopwatchIds.forEach(function (id) {
+        if (stopwatch._clockId !== id) {
+          try {
+            document.querySelector("#pause-btn-".concat(id)).click();
+          } catch (error) {
+            console.log(error);
+          }
+        }
+      });
     }
   }, {
     key: "render",
@@ -1659,6 +1720,7 @@ var StopwatchList = /*#__PURE__*/function (_HTMLElement) {
           newStopwatch.date = this.data.data[i].date;
           newStopwatch.running = this.data.data[i].running;
           newStopwatch.handleDelete = this.deleteStopwatch;
+          newStopwatch.handleNonParallel = this.handleNonParallel;
           newStopwatch.stopwatchData = this.data;
           this.stopwatchList.insertBefore(newStopwatch, this.titleForm);
         }

@@ -6,6 +6,7 @@ class StopwatchList extends HTMLElement {
     super();
     this.data = new StopwatchDataList();
     this.stopwatchCount = this.data.getData().length;
+    StopwatchList.stopwatchIds = this.data.getData().map(stopwatch => stopwatch.id);
     this.addBtn;
     this.stopwatchList;
     this.titleForm;
@@ -19,7 +20,9 @@ class StopwatchList extends HTMLElement {
     const newStopwatch = document.createElement("stop-watch");
     newStopwatch.title = this.titleForm.value || "Untitled";
     newStopwatch.handleDelete = this.deleteStopwatch;
+    newStopwatch.handleNonParallel = this.handleNonParallel;
     newStopwatch.clockId = this.stopwatchCount;
+    StopwatchList.stopwatchIds.push(this.stopwatchCount);
     newStopwatch.stopwatchData = this.data;
     this.stopwatchList.insertBefore(newStopwatch, this.titleForm);
 
@@ -35,7 +38,43 @@ class StopwatchList extends HTMLElement {
   }
 
   deleteStopwatch(stopwatch) {
-    stopwatch.remove();
+    var data_del = new StopwatchDataList();
+    var tmp = data_del.getData();
+    var idx;
+    console.log("lama")
+    console.log(data_del);
+    var r = confirm("Anda yakin menghapus stopwatch : " + stopwatch._title);
+    if (r == true) {
+      for (var i = 0; i < tmp.length; i++) {
+        if (stopwatch._clockId == tmp[i].id){
+          tmp.splice(i, 1);
+          idx = i;
+          break;
+        }
+      }
+      for (idx; idx < tmp.length; idx++) {
+        tmp[idx].id = tmp[idx].id - 1;
+      }
+      console.log("baru")
+      console.log(tmp);
+      stopwatch.handlePause();
+      stopwatch.remove();
+      data_del.saveData(tmp);
+    } else {
+      // Does Nothing
+    }
+  }
+
+  handleNonParallel(stopwatch) {
+    StopwatchList.stopwatchIds.forEach((id) => {
+      if(stopwatch._clockId !== id) {
+        try {
+          document.querySelector(`#pause-btn-${id}`).click();
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    })
   }
 
   render() {
@@ -60,6 +99,7 @@ class StopwatchList extends HTMLElement {
         newStopwatch.date = this.data.data[i].date;
         newStopwatch.running = this.data.data[i].running;
         newStopwatch.handleDelete = this.deleteStopwatch;
+        newStopwatch. handleNonParallel = this.handleNonParallel
         newStopwatch.stopwatchData = this.data;
         this.stopwatchList.insertBefore(newStopwatch, this.titleForm);
       }
