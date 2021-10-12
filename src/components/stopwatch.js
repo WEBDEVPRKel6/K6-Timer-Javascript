@@ -68,11 +68,13 @@ class Stopwatch extends HTMLElement {
     if (!this.interval) {
       this.interval = setInterval(() => this.handleUpdate(), 1000);
     }
+    this.updateData()
   }
 
   handlePause() {
     this.startBtn.style.display = 'block';
-    this.startBtn.innerText = 'Continue';
+    if (this._time > 0)
+      this.startBtn.innerText = 'Continue';
     this.pauseBtn.style.display = 'none';
     this._running = false;
 
@@ -134,7 +136,7 @@ class Stopwatch extends HTMLElement {
         <p id='stopwatch-value'>${Time.toHHMMSS(this._time)}</p>
       </div>
       <div class='flex space-between'>
-        <button id='start-btn' class='bg-green'>Start</button>
+        <button id='start-btn' class='bg-green'>${this._time > 0 ? 'Continue': 'Start'}</button>
         <button id='pause-btn-${this._clockId}' class='bg-blue pause-btn'>Pause</button>
         <button id='stop-btn' class='bg-red'>Stop</button>
         <button id='delete-btn' class='bg-red'>Delete</button>

@@ -38,16 +38,43 @@ class StopwatchList extends HTMLElement {
   }
 
   deleteStopwatch(stopwatch) {
-    stopwatch.remove();
+    var data_del = new StopwatchDataList();
+    var tmp = data_del.getData();
+    var idx;
+    console.log("lama")
+    console.log(data_del);
+    var r = confirm("Anda yakin menghapus stopwatch : " + stopwatch._title);
+    if (r == true) {
+      for (var i = 0; i < tmp.length; i++) {
+        if (stopwatch._clockId == tmp[i].id){
+          tmp.splice(i, 1);
+          idx = i;
+          break;
+        }
+      }
+      for (idx; idx < tmp.length; idx++) {
+        tmp[idx].id = tmp[idx].id - 1;
+      }
+      console.log("baru")
+      console.log(tmp);
+      stopwatch.remove();
+      data_del.saveData(tmp);
+    } else {
+      // Does Nothing
+    }
   }
 
   handleNonParallel(stopwatch) {
     console.log(StopwatchList.stopwatchIds);
+    console.log(stopwatch._clockId);
     StopwatchList.stopwatchIds.forEach((id) => {
-      if(stopwatch._clockId === id)
-        return;
-
-      document.querySelector(`#pause-btn-${id}`).click();
+      if(stopwatch._clockId !== id) {
+        try {
+          document.querySelector(`#pause-btn-${id}`).click();
+        } catch (error) {
+          console.log(error);
+        }
+      }
     })
   }
 

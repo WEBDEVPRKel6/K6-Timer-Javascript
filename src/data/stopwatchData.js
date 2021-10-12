@@ -20,6 +20,10 @@ class StopwatchDataList {
   getData() {
     return this.data;
   }
+
+  saveData(data_baru){
+    localStorage.setItem('stopwatchData', JSON.stringify(data_baru));
+  }
 }
 
 export default StopwatchDataList;
