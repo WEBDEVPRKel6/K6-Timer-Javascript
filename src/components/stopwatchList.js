@@ -80,7 +80,7 @@ class StopwatchList extends HTMLElement {
   render() {
     this.innerHTML = `
     <div class='stopwatch-list-container'>
-      <input type="text" name="title" id="stopwatch-title-form" class="align-center" placeholder='Untitled'/>
+      <input type="text" name="title" id="stopwatch-title-form" class="align-center" placeholder='Nama Tugas e.g. WebDev Praktek'/>
       <button id='addStopwatch-btn' class='bg-green'>Add new</button>
     </div>
     `;
